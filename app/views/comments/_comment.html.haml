@@ -1,2 +1,7 @@
 .comment
-	%p= comment.comment
+	%p
+		= comment.comment
+		= comment.user.email
+
+		= link_to "Edit Post", edit_post_comment_path(comment.post, comment)
+		= link_to "Delete Post", [comment.post, comment], method: :delete, data: {confirm: "Are You sure?"}
