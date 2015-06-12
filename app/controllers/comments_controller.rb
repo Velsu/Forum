@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
 
-	before_action :find_post, only: [:create, :edit, :update, :destroy]
+	before_action :find_post, only: [:edit, :update, :destroy]
 
 	def create
+		@post = Post.find(params[:post_id])
 		@comment = @post.comments.create(params[:comment].permit(:comment))
 		@comment.user_id = current_user.id if current_user
 
