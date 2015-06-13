@@ -1,0 +1,4 @@
+%h2= @user.email
+
+- @user.posts.each do |post|
+	%p= link_to post.title, post_path(post)
